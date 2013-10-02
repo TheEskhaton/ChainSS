@@ -2,7 +2,7 @@
 
 ### Installation ###
 
-npm install chainss
+`npm install chainss --save`
 
 A chainable CSS creation module for nodejs.
 
