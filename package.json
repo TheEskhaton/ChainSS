@@ -1,0 +1,28 @@
+{
+  "name": "chainss",
+  "version": "0.0.1",
+  "description": "A Chainable CSS creation module for nodejs",
+  "main": "src/chainss.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "chai": "~1.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TheEskhaton/ChainSS.git"
+  },
+  "keywords": [
+    "css",
+    "chainable",
+    "utility"
+  ],
+  "author": "Alen Genzić",
+  "license": "BSD",
+  "readmeFilename": "README.md"
+}
