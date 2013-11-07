@@ -1,13 +1,18 @@
 var props = require('./props.js');
 
+/**
+ * @func insertAt
+ * @param {Number} - Index
+ * @param {string} - String
+ * @returns - String with inserted string
+ */
 String.prototype.insertAt=function(index, string) { 
   return this.substr(0, index) + string + this.substr(index);
-}
+};
 
 /*
- * Constructor 
+ * @class 
  */
-
 var Chainss = function(selector){
     this.selector = selector;
     for(key in props.props){
@@ -17,14 +22,23 @@ var Chainss = function(selector){
     this.computed = [];
 };
 
-/*
- * Constants Definitions
+/**
+ * @constant
+ * @default
  */
-
 Chainss.TABSPACE = '    ';
+
+/**
+ * @constant
+ * @default
+ */
 Chainss.NEWLINE = '\n';
 
-
+/**
+ * @func isUpper
+ * @param {string} c - the string to check
+ * @returns {Boolean}
+ */
 var isUpper = function(c){return c == c.toUpperCase()};
 
 /*
@@ -39,7 +53,7 @@ var makePropName = function(funcName){
         }
     }
     return output.toLowerCase();
-}
+};
 
 /*
  * Creates a function that is used to set the css property values by chaining the calls
@@ -51,7 +65,7 @@ Chainss.prototype.makeFunc = function(name){
         return this;
     }
     return theFunc;
-}
+};
 
 /*
  * Builds the actual css for the given selector string
@@ -63,5 +77,5 @@ Chainss.prototype.getCSS = function(){
     });
     output += '}'+Chainss.NEWLINE;
     return output;
-}
+};
 module.exports = Chainss;
