@@ -23,4 +23,27 @@ span.test {
 }
 ```
 
+### Creating CSS for multiple selectors ###
+
+```javascript
+var ChainSS = require('chainss');
+var list = new ChainSS.SelectorList();
+list = list.add('span.test')
+        .add('.selector')
+        .style('span.test', { fontSize: '14px'})
+        .style('.selector', { display: 'block'})
+var css = list.getCSS();
+```
+
+Produces
+
+```css
+span.test {
+    font-size : "14px";
+}
+
+.selector {
+    display : "block";
+}
+```
 
