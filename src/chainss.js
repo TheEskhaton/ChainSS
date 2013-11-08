@@ -78,4 +78,45 @@ Chainss.prototype.getCSS = function(){
     output += '}'+Chainss.NEWLINE;
     return output;
 };
+
+/*
+ * @class
+ */
+Chainss.SelectorList = function(){
+    this.chainers = [];
+    return this;
+}
+
+Chainss.SelectorList.prototype.add = function(selector){
+    var alreadyContaining = false;
+    this.chainers.forEach(function(c){
+        if(c.selector == selector){
+            alreadyContaining = true;    
+        }
+    });
+    if(!alreadyContaining){
+        this.chainers.push(new Chainss(selector));
+    }
+    return this;
+};
+
+Chainss.SelectorList.prototype.style = function(selector, styles){
+    this.chainers.forEach(function(c){
+        if(c.selector === selector){
+            for(style in styles){
+                c.computed.push(makePropName(style) + ' :' + ' "'+styles[style]+'";');
+            }
+        }
+    });
+    return this;
+};
+
+Chainss.SelectorList.prototype.getCSS = function(){
+    var css = '';
+    this.chainers.forEach(function(c){
+        css += c.getCSS();
+    }); 
+    return css;
+};
+
 module.exports = Chainss;
